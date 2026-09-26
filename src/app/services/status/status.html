@@ -1,0 +1,38 @@
+<div class="max-w-md mx-auto mt-10">
+  <div class="text-3xl font-bold max-w-sm mx-auto m-10">
+    <h1 class="w-full text-center">Status Checker</h1>
+  </div>
+
+  <!--
+  <div>
+    {{ services | json }}
+  </div>
+  -->
+
+  <div class="divider" role="separator" aria-label="Divider"></div>
+
+  <div class="flex flex-col gap-4">
+    @for (service of (services$ | async)??[]; track service.name) {
+    <div class="rounded-xl border my-3">
+      <div class="flex items-center justify-between p-4">
+        <span class="text-3xl w-full text-center"> {{ service.name }} </span>
+      </div>
+
+      <span
+        class="flex items-center gap-3 font-semibold rounded-xl mx-20 my-3"
+        [ngClass]="{
+          'bg-green-300': service.status === 'Running',
+          'bg-red-300': service.status === 'Stopped',
+          'bg-yellow-300': service.status === 'Unknown',
+          'bg-gray-300': service.status === 'Not Implemented',
+        }"
+      >
+        <span class="text-xl text-center w-full">
+          {{ service.status }}
+        </span>
+      </span>
+      </div>
+    }
+  </div>
+
+</div>
