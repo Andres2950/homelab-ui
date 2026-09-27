@@ -1,17 +1,15 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { environment } from '../environments/environment';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { homelabIcons, homelabLinks } from './homelab-links';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterModule, CommonModule],
+  imports: [RouterOutlet, NgIcon],
+  providers: [provideIcons(homelabIcons)],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('homelab_ui');
-  public envi = environment;
+  protected readonly links = homelabLinks;
 }

@@ -1,6 +1,5 @@
 <main class="main">
   <div class="content">
-
     <div class="text-3xl font-bold max-w-sm mx-auto m-10">
       <h1 class="w-full text-center">Debian Homelab</h1>
     </div>
@@ -9,41 +8,20 @@
 
     <div class="text-xl max-w-sm mx-auto m-7">
       <div class="pill-group flex flex-col items-center gap-4">
-        @for (item of [
-          { title: 'Overleaf',        route: envi.overleafUrl,  external: true },
-          { title: 'Jellyfin',        route: envi.jellyfinUrl,  external: true },
-          { title: 'Kavita',          route: envi.kavitaUrl,    external: true },
-          { title: 'Memos',           route: envi.memosUrl,     external: true },
-          { title: 'AFFiNe',          route: envi.affineUrl,    external: true },
-          { title: 'Marimo',          route: envi.marimoUrl,    external: true },
-          { title: 'MDArchive',       route: envi.mdarchiveUrl, external: true },
-        ]; track item.title) {
-
-          <!-- Interno-->
+        @for (item of links; track item.title) {
           <a
-            *ngIf="!item.external"
-            class="pill hover:bg-red-300 rounded-xl px-6 py-2 text-center w-full border"
-            [routerLink]="item.route"
-            rel="noopener"
-          >
-            <span>{{ item.title }}</span>
-          </a>
-          <!--Externo-->
-          <a
-            *ngIf="item.external"
-            class="pill hover:bg-red-300 rounded-xl px-6 py-2 text-center w-full border"
-            [href]="item.route"
+            class="pill flex items-center justify-center gap-3 hover:bg-red-300 rounded-xl px-6 py-2 w-full border"
+            [href]="item.url"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
+            <ng-icon [name]="item.icon" size="1.25em" aria-hidden="true" />
             <span>{{ item.title }}</span>
           </a>
         }
       </div>
     </div>
-
   </div>
 </main>
-
 
 <router-outlet />
