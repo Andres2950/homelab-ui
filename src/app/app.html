@@ -10,13 +10,13 @@
     <div class="text-xl max-w-sm mx-auto m-7">
       <div class="pill-group flex flex-col items-center gap-4">
         @for (item of [
-          { title: 'Status Checker',  route: '/status',         external: false },
           { title: 'Overleaf',        route: envi.overleafUrl,  external: true },
           { title: 'Jellyfin',        route: envi.jellyfinUrl,  external: true },
           { title: 'Kavita',          route: envi.kavitaUrl,    external: true },
           { title: 'Memos',           route: envi.memosUrl,     external: true },
           { title: 'AFFiNe',          route: envi.affineUrl,    external: true },
-          { title: 'Collapse',        route: '/',               external: false},
+          { title: 'Marimo',          route: envi.marimoUrl,    external: true },
+          { title: 'MDArchive',       route: envi.mdarchiveUrl, external: true },
         ]; track item.title) {
 
           <!-- Interno-->
